@@ -2,7 +2,7 @@
 
 > A cinematic, non-linear browser-based presentation deck built for Dubai Mall's commercial partnerships and leasing teams.
 
-**[→ Live Demo]( [https://hakima-banoo.github.io/dubai-mall-deck])**
+**[→ Live Demo](https://hakima-banoo.github.io/dubai-mall-deck)**
 
 ---
 
