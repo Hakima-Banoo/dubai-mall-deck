@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubai Mall — Partner & Sponsorship Deck 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#C9A84C;--gold-l:#E8C97A;
+  --black:#080807;--off:#111110;--dark:#191918;
+  --muted:#5A5A56;--soft:#9A9A94;--white:#FAF9F4;
+  --fd:'Cormorant Garamond',Georgia,serif;
+  --fs:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--black);color:var(--white)}
+
+/* NAV */
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px 48px;
+  background:linear-gradient(to bottom,rgba(8,8,7,.9),transparent);
+  transition:background .4s;
+}
+#nav.solid{background:rgba(8,8,7,.96);backdrop-filter:blur(14px)}
+.nav-logo{
+  font-family:var(--fd);font-size:19px;font-weight:300;
+  letter-spacing:.18em;color:var(--white);text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;
+}
+.nav-dot{width:6px;height:6px;background:var(--gold);border-radius:50%}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  font-family:var(--fs);font-size:10.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(250,249,244,.45);
+  cursor:pointer;transition:color .25s;text-decoration:none;
+}
+.nav-links a:hover,.nav-links a.on{color:var(--gold)}
+.nav-cta{
+  font-family:var(--fs);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;padding:9px 22px;
+  border:1px solid rgba(201,168,76,.45);color:var(--gold);
+  background:transparent;cursor:pointer;transition:all .3s;
+}
+.nav-cta:hover{background:var(--gold);color:var(--black)}
+
+/* DECK */
+#deck{width:100%;height:100vh;position:relative;overflow:hidden}
+.slide{
+  position:absolute;inset:0;opacity:0;pointer-events:none;
+  transition:opacity .75s var(--ease);
+}
+.slide.on{opacity:1;pointer-events:all}
+
+/* DOTS */
+#dots{
+  position:fixed;right:28px;top:50%;transform:translateY(-50%);
+  z-index:900;display:flex;flex-direction:column;gap:9px;
+}
+.dot{
+  width:5px;height:5px;border-radius:50%;
+  background:rgba(201,168,76,.22);cursor:pointer;
+  transition:all .35s var(--ease);
+}
+.dot.on{background:var(--gold);transform:scale(1.6)}
+
+/* MODULE SIDEBAR */
+#mods{
+  position:fixed;left:32px;top:50%;transform:translateY(-50%);
+  z-index:900;display:flex;flex-direction:column;gap:5px;
+}
+.mb{
+  font-family:var(--fs);font-size:9px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(201,168,76,.28);
+  background:none;border:none;cursor:pointer;
+  padding:3px 0;transition:color .25s;
+  writing-mode:vertical-rl;transform:rotate(180deg);
+}
+.mb:hover,.mb.on{color:var(--gold)}
+
+/* BOTTOM NAV */
+#bnav{
+  position:fixed;bottom:32px;left:50%;transform:translateX(-50%);
+  z-index:900;display:flex;gap:14px;align-items:center;
+}
+.arr{
+  width:44px;height:44px;border:1px solid rgba(201,168,76,.28);
+  background:transparent;color:var(--gold);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:all .25s;
+}
+.arr:hover{background:rgba(201,168,76,.1);border-color:var(--gold)}
+.ctr{
+  font-family:var(--fs);font-size:10px;letter-spacing:.22em;
+  color:rgba(250,249,244,.35);min-width:60px;text-align:center;
+}
+
+/* PROGRESS */
+#prog{
+  position:fixed;top:0;left:0;height:1.5px;
+  background:var(--gold);z-index:1001;
+  transition:width .5s var(--ease);
+}
+
+/* SHARED HELPERS */
+.lbl{
+  font-family:var(--fs);font-size:10px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:24px;display:block;
+}
+.h1{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(54px,7.5vw,110px);line-height:.9;color:var(--white);
+}
+.h1 em,.h2 em,.h3 em{color:var(--gold);font-style:italic}
+.h2{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(34px,4vw,56px);line-height:1.05;color:var(--white);
+}
+.h3{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(28px,3vw,44px);line-height:1.1;color:var(--white);
+}
+.bc{
+  font-family:var(--fs);font-size:14.5px;font-weight:300;
+  color:rgba(250,249,244,.55);line-height:1.8;
+}
+.fu{opacity:0;transform:translateY(22px)}
+.slide.on .fu{animation:fadeUp .8s var(--ease) forwards}
+.d1{animation-delay:.1s!important}
+.d2{animation-delay:.24s!important}
+.d3{animation-delay:.38s!important}
+.d4{animation-delay:.52s!important}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+/* VIDEO BG */
+.vbg{position:absolute;inset:0;overflow:hidden;background:var(--black)}
+.vbg img,.vbg video{width:100%;height:100%;object-fit:cover;display:block}
+.vbg::after{content:'';position:absolute;inset:0;background:rgba(8,8,7,.58)}
+.vbg.dark::after{background:rgba(8,8,7,.74)}
+
+/* ───── S1 HERO ───── */
+#s1{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.s1-wrap{
+  position:relative;z-index:2;text-align:center;
+  max-width:860px;padding:0 40px;
+}
+.s1-eye{
+  font-family:var(--fs);font-size:10px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--gold);
+  margin-bottom:28px;display:block;
+  opacity:0;transform:translateY(14px);
+  animation:fadeUp .9s .25s var(--ease) forwards;
+}
+.s1-title{
+  font-family:var(--fd);font-weight:300;
+  font-size:clamp(64px,10vw,136px);line-height:.88;
+  color:var(--white);margin-bottom:36px;
+  opacity:0;transform:translateY(28px);
+  animation:fadeUp 1.1s .45s var(--ease) forwards;
+}
+.s1-sub{
+  font-family:var(--fs);font-size:15px;font-weight:300;
+  color:rgba(250,249,244,.5);line-height:1.75;
+  max-width:540px;margin:0 auto 48px;
+  opacity:0;transform:translateY(14px);
+  animation:fadeUp .9s .7s var(--ease) forwards;
+}
+.s1-stats{
+  display:flex;border:1px solid rgba(201,168,76,.14);
+  opacity:0;animation:fadeUp .9s .95s var(--ease) forwards;
+}
+.s1-stat{
+  flex:1;padding:22px 28px;text-align:center;
+  border-right:1px solid rgba(201,168,76,.1);
+}
+.s1-stat:last-child{border-right:none}
+.s1-num{
+  font-family:var(--fd);font-size:36px;font-weight:400;
+  color:var(--gold);line-height:1;display:block;
+}
+.s1-slbl{
+  font-family:var(--fs);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--soft);margin-top:5px;display:block;
+}
+.scroll-cue{
+  position:absolute;bottom:112px;left:50%;transform:translateX(-50%);
+  font-family:var(--fs);font-size:9.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:rgba(201,168,76,.38);
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  opacity:0;animation:fadeUp .9s 1.4s var(--ease) forwards;z-index:2;
+}
+.sl{width:1px;height:34px;background:linear-gradient(to bottom,var(--gold),transparent);animation:sp 2s 1.8s infinite}
+@keyframes sp{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ───── S2 ABOUT ───── */
+#s2{display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.s2-img{position:relative;overflow:hidden;background:var(--dark)}
+.s2-img img{width:100%;height:100%;object-fit:cover;display:block}
+.s2-img::after{content:'';position:absolute;inset:0;background:rgba(8,8,7,.35)}
+.s2-right{
+  padding:100px 68px 100px 60px;background:var(--off);
+  display:flex;flex-direction:column;justify-content:center;overflow-y:auto;
+}
+.feat-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin-top:28px}
+.feat-item{
+  display:flex;gap:14px;align-items:flex-start;
+  font-family:var(--fs);font-size:13.5px;font-weight:300;
+  color:rgba(250,249,244,.62);line-height:1.55;
+}
+.fd{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:7px}
+
+/* ───── S3 AUDIENCE ───── */
+#s3{
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:110px 68px 110px 120px;background:var(--black);
+}
+.s3-wrap{max-width:1160px;width:100%;display:grid;grid-template-columns:1fr 1.6fr;gap:68px;align-items:center}
+.aud-bars{display:flex;flex-direction:column;gap:17px;margin-top:30px}
+.aud-row{display:flex;flex-direction:column;gap:5px}
+.aud-meta{
+  display:flex;justify-content:space-between;
+  font-family:var(--fs);font-size:11px;letter-spacing:.06em;
+  color:rgba(250,249,244,.4);text-transform:uppercase;
+}
+.aud-meta span{color:var(--gold);font-size:13px;font-weight:500}
+.aud-track{height:2px;background:rgba(201,168,76,.09);border-radius:2px;overflow:hidden}
+.aud-fill{
+  height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-l));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 1.3s var(--ease);
+}
+.slide.on .aud-fill{transform:scaleX(1)}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.mc{
+  background:var(--dark);padding:28px 22px;
+  border:1px solid rgba(201,168,76,.07);transition:border-color .3s;cursor:default;
+}
+.mc:hover{border-color:rgba(201,168,76,.2)}
+.mc-num{font-family:var(--fd);font-size:44px;font-weight:400;color:var(--gold);line-height:1;margin-bottom:7px;display:block}
+.mc-lbl{font-family:var(--fs);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.mc-sub{font-family:var(--fs);font-size:12px;font-weight:300;color:rgba(250,249,244,.32);margin-top:3px}
+
+/* ───── S4 TIERS ───── */
+#s4{
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:100px 56px 90px;background:var(--off);
+}
+.s4-in{max-width:1160px;width:100%}
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:46px}
+.tc{
+  background:var(--dark);padding:34px 28px;
+  border:1px solid rgba(201,168,76,.07);
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:all .35s var(--ease);
+}
+.tc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .35s}
+.tc:hover{background:#1C1B18;border-color:rgba(201,168,76,.2)}
+.tc:hover::after{opacity:1}
+.tc.plat::after{background:linear-gradient(90deg,#C9A84C,#E8C97A)}
+.tc.gld::after{background:linear-gradient(90deg,#B8960A,#D4AD22)}
+.tc.sel::after{background:linear-gradient(90deg,#888,#BBB)}
+.tbadge{
+  font-family:var(--fs);font-size:8.5px;letter-spacing:.3em;
+  text-transform:uppercase;padding:4px 10px;
+  border:1px solid;display:inline-block;margin-bottom:18px;
+}
+.tc.plat .tbadge{color:var(--gold);border-color:rgba(201,168,76,.4)}
+.tc.gld .tbadge{color:#C9A84C;border-color:rgba(201,168,76,.3)}
+.tc.sel .tbadge{color:#A0A0A0;border-color:rgba(160,160,160,.3)}
+.tname{font-family:var(--fd);font-size:30px;font-weight:300;color:var(--white);line-height:1;margin-bottom:5px}
+.tprice{font-family:var(--fs);font-size:12px;font-weight:300;color:var(--soft);margin-bottom:22px}
+.tprice strong{color:var(--gold);font-weight:500;font-size:15px}
+.tperks{list-style:none;display:flex;flex-direction:column;gap:9px}
+.tperk{
+  display:flex;gap:9px;align-items:flex-start;
+  font-family:var(--fs);font-size:12.5px;font-weight:300;
+  color:rgba(250,249,244,.5);line-height:1.4;
+}
+.pc{color:var(--gold);flex-shrink:0;font-size:10px;margin-top:2px}
+
+/* ───── S5 LEASING ───── */
+#s5{display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden;background:var(--black)}
+.s5-left{
+  padding:100px 60px 100px 120px;
+  display:flex;flex-direction:column;justify-content:center;overflow-y:auto;
+}
+.ztabs{display:flex;gap:2px;margin:26px 0 30px;flex-wrap:wrap}
+.ztab{
+  font-family:var(--fs);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;padding:9px 18px;
+  border:1px solid rgba(201,168,76,.14);color:var(--soft);
+  background:transparent;cursor:pointer;transition:all .25s;
+}
+.ztab.on,.ztab:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.05)}
+.zc{display:none}
+.zc.on{display:block}
+.ztitle{font-family:var(--fd);font-size:26px;font-weight:300;color:var(--white);margin-bottom:11px}
+.zdesc{font-family:var(--fs);font-size:13.5px;font-weight:300;color:rgba(250,249,244,.5);line-height:1.75;margin-bottom:22px}
+.zspecs{display:flex;gap:26px}
+.zsv{font-family:var(--fd);font-size:24px;color:var(--gold)}
+.zsk{font-family:var(--fs);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.s5-right{
+  background:var(--dark);position:relative;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.fp{position:relative;width:320px;height:440px}
+.fpz{
+  position:absolute;border:1px solid rgba(201,168,76,.14);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--fs);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(201,168,76,.36);
+  cursor:pointer;transition:all .25s;
+}
+.fpz:hover,.fpz.lit{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,.06)}
+.fp-fa{top:16px;left:16px;width:134px;height:94px}
+.fp-anc{top:16px;right:16px;width:150px;height:122px}
+.fp-fb{top:128px;left:16px;width:108px;height:74px}
+.fp-ret{top:156px;right:16px;width:150px;height:74px}
+.fp-atr{top:224px;left:42px;width:196px;height:94px;border-color:rgba(201,168,76,.28);color:rgba(201,168,76,.6)}
+.fp-pop{bottom:16px;left:16px;width:134px;height:74px}
+.fp-ent{bottom:16px;right:16px;width:150px;height:74px}
+
+/* ───── S6 ATTRACTIONS ───── */
+#s6{
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:88px 68px 88px 120px;background:var(--off);
+}
+.s6-in{max-width:1160px;width:100%}
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:44px}
+.acard{
+  background:var(--dark);overflow:hidden;
+  border:1px solid rgba(201,168,76,.07);cursor:pointer;
+  transition:border-color .35s;display:flex;flex-direction:column;
+}
+.acard:hover{border-color:rgba(201,168,76,.25)}
+.acard-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--dark);position:relative}
+.acard-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
+.acard:hover .acard-img img{transform:scale(1.06)}
+.acard-body{padding:20px 18px}
+.acard-num{font-family:var(--fd);font-size:12px;color:var(--gold);margin-bottom:5px;display:block}
+.acard-name{font-family:var(--fd);font-size:19px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:5px}
+.acard-cap{font-family:var(--fs);font-size:10.5px;letter-spacing:.1em;color:var(--soft);text-transform:uppercase}
+
+/* ───── S7 ACTIVATIONS ───── */
+#s7{
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;padding:88px 68px 88px 120px;background:var(--black);
+}
+.s7-in{max-width:1160px;width:100%}
+.act-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:42px}
+.ac{
+  background:var(--dark);padding:28px 22px;
+  border:1px solid rgba(201,168,76,.07);
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:all .35s var(--ease);
+}
+.ac:hover{background:#1C1B18;border-color:rgba(201,168,76,.2)}
+.ac-n{font-family:var(--fd);font-size:54px;font-weight:300;color:rgba(201,168,76,.07);position:absolute;top:8px;right:12px;line-height:1}
+.ac-ico{width:40px;height:40px;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;margin-bottom:17px;font-size:16px}
+.ac-title{font-family:var(--fd);font-size:20px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:10px}
+.ac-desc{font-family:var(--fs);font-size:12.5px;font-weight:300;color:rgba(250,249,244,.4);line-height:1.6}
+
+/* ───── S8 EVENTS ───── */
+#s8{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.s8-wrap{
+  position:relative;z-index:2;text-align:center;
+  max-width:680px;padding:0 44px;
+}
+.ev-strip{display:flex;gap:2px;margin-top:44px;justify-content:center}
+.ev{
+  flex:1;max-width:210px;background:rgba(8,8,7,.72);
+  border:1px solid rgba(201,168,76,.18);padding:20px 16px;
+  text-align:left;backdrop-filter:blur(14px);
+}
+.ev-mo{font-family:var(--fs);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.ev-name{font-family:var(--fd);font-size:18px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:4px}
+.ev-type{font-family:var(--fs);font-size:11px;font-weight:300;color:rgba(250,249,244,.42)}
+
+/* ───── S9 CTA ───── */
+#s9{display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--black)}
+.s9-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 100%,rgba(201,168,76,.05),transparent 60%)}
+.s9-line{position:absolute;left:80px;right:80px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.18),transparent)}
+.s9-lt{top:110px}.s9-lb{bottom:110px}
+.s9-wrap{position:relative;z-index:2;text-align:center;max-width:680px;padding:0 44px}
+.s9-ov{font-family:var(--fs);font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;display:block}
+.s9-h{font-family:var(--fd);font-weight:300;font-size:clamp(42px,6vw,76px);line-height:1;color:var(--white);margin-bottom:26px}
+.s9-h em{color:var(--gold);font-style:italic}
+.s9-body{font-family:var(--fs);font-size:14.5px;font-weight:300;color:rgba(250,249,244,.46);line-height:1.8;margin-bottom:42px;max-width:440px;margin-left:auto;margin-right:auto}
+.s9-btns{display:flex;gap:14px;justify-content:center;align-items:center}
+.btn-p{font-family:var(--fs);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:14px 36px;background:var(--gold);color:var(--black);border:none;cursor:pointer;font-weight:500;transition:all .3s;text-decoration:none;display:inline-block}
+.btn-p:hover{background:var(--gold-l)}
+.btn-g{font-family:var(--fs);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:14px 36px;background:transparent;color:var(--gold);border:1px solid rgba(201,168,76,.4);cursor:pointer;transition:all .3s}
+.btn-g:hover{background:rgba(201,168,76,.08);border-color:var(--gold)}
+.s9-contact{margin-top:46px;padding-top:30px;border-top:1px solid rgba(201,168,76,.1);display:flex;gap:36px;justify-content:center;flex-wrap:wrap}
+.s9-ci{font-family:var(--fs);font-size:12px;font-weight:300;color:rgba(250,249,244,.3)}
+.s9-ci span{color:rgba(250,249,244,.54);display:block;margin-bottom:3px;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  #nav{padding:18px 28px}
+  .nav-links{display:none}
+  #s2{grid-template-columns:1fr}
+  .s2-img{height:260px}
+  .s2-right{padding:52px 36px}
+  #s3{padding:80px 32px}
+  .s3-wrap{grid-template-columns:1fr;gap:36px}
+  #s4{padding:80px 32px}
+  .tgrid{grid-template-columns:1fr}
+  #s5{grid-template-columns:1fr}
+  .s5-left{padding:60px 32px}
+  .s5-right{display:none}
+  #s6{padding:80px 32px}
+  .agrid{grid-template-columns:1fr 1fr}
+  #s7{padding:80px 32px}
+  .act-grid{grid-template-columns:1fr 1fr}
+  #mods{display:none}
+  .s1-stats{flex-wrap:wrap}
+  .s1-stat{min-width:48%;border-right:none;border-bottom:1px solid rgba(201,168,76,.1)}
+}
+@media(max-width:640px){
+  #nav{padding:14px 20px}
+  .nav-cta{display:none}
+  .s1-wrap{padding:0 20px}
+  .agrid,.act-grid{grid-template-columns:1fr}
+  #s3,#s4,#s6,#s7{padding:70px 20px}
+  .s5-left{padding:60px 20px}
+  .s8-wrap,.s9-wrap{padding:0 22px}
+  .ev-strip{flex-direction:column;align-items:center}
+  .ev{max-width:100%;width:100%}
+  .s9-btns{flex-direction:column}
+  .s9-contact{flex-direction:column;gap:16px}
+  #dots{right:14px}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<nav id="nav">
+  <div class="nav-logo"><div class="nav-dot"></div>Dubai Mall</div>
+  <ul class="nav-links">
+    <li><a onclick="go(0)" data-s="0">Overview</a></li>
+    <li><a onclick="go(2)" data-s="2">Audience</a></li>
+    <li><a onclick="go(3)" data-s="3">Sponsorship</a></li>
+    <li><a onclick="go(4)" data-s="4">Leasing</a></li>
+    <li><a onclick="go(5)" data-s="5">Attractions</a></li>
+    <li><a onclick="go(8)" data-s="8">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="go(8)">Partner With Us</button>
+</nav>
+
+<div id="dots"></div>
+
+<div id="mods">
+  <button class="mb on" onclick="go(0)">Intro</button>
+  <button class="mb" onclick="go(1)">About</button>
+  <button class="mb" onclick="go(2)">Audience</button>
+  <button class="mb" onclick="go(3)">Tiers</button>
+  <button class="mb" onclick="go(4)">Leasing</button>
+  <button class="mb" onclick="go(5)">Attractions</button>
+  <button class="mb" onclick="go(6)">Activations</button>
+  <button class="mb" onclick="go(7)">Events</button>
+  <button class="mb" onclick="go(8)">Connect</button>
+</div>
+
+<div id="deck">
+
+<!-- S1: HERO -->
+<section class="slide on" id="s1">
+  <div class="vbg">
+    <!-- Dubai Fountain / Downtown aerial – Wikimedia Commons, CC0 -->
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Dubai_fountain_and_burj_khalifa.jpg/1920px-Dubai_fountain_and_burj_khalifa.jpg"
+      alt="Dubai Mall and Burj Khalifa at night"
+      onerror="this.src='https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=1920'"
+    >
+  </div>
+  <div class="s1-wrap">
+    <span class="s1-eye">The World's Most Visited Destination · Partner Deck 2025–2026</span>
+    <h1 class="s1-title">The World<br>Shops <em>Here</em></h1>
+    <p class="s1-sub">Dubai Mall is the world's most visited place on Earth — 111 million visitors in 2024 alone. Your brand belongs at its centre.</p>
+    <div class="s1-stats">
+      <div class="s1-stat"><span class="s1-num">111M</span><span class="s1-slbl">Visitors in 2024</span></div>
+      <div class="s1-stat"><span class="s1-num">1,200+</span><span class="s1-slbl">Retail Outlets</span></div>
+      <div class="s1-stat"><span class="s1-num">13M</span><span class="s1-slbl">Sq Ft Total Area</span></div>
+      <div class="s1-stat"><span class="s1-num">200+</span><span class="s1-slbl">Dining Concepts</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><div class="sl"></div>Explore</div>
+</section>
+
+<!-- S2: ABOUT -->
+<section class="slide" id="s2">
+  <div class="s2-img">
+    <!-- Dubai Mall interior – Wikimedia Commons, CC BY-SA 4.0 -->
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Interior_of_Dubai_Mall.jpg/1200px-Interior_of_Dubai_Mall.jpg"
+      alt="Interior of Dubai Mall grand atrium"
+      loading="lazy"
+      onerror="this.src='https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=1200'"
+    >
+  </div>
+  <div class="s2-right">
+    <span class="lbl">01 — The Destination</span>
+    <h2 class="h2 fu">More Than a Mall.<br><em>A Global Icon.</em></h2>
+    <p class="bc fu d1" style="margin-top:18px">Inaugurated in 2008 and operated by Emaar Properties, Dubai Mall anchors Downtown Dubai — steps from Burj Khalifa and the world's largest choreographed fountain. For two consecutive years it has held the title of Most Visited Place on Earth.</p>
+    <ul class="feat-list fu d2">
+      <li class="feat-item"><span class="fd"></span>Galeries Lafayette &amp; Bloomingdale's as anchor department stores</li>
+      <li class="feat-item"><span class="fd"></span>Fashion Avenue — 150+ luxury houses: Louis Vuitton, Gucci, Hermès, Rolex</li>
+      <li class="feat-item"><span class="fd"></span>Dubai Aquarium &amp; Underwater Zoo — world's largest acrylic viewing panel</li>
+      <li class="feat-item"><span class="fd"></span>Olympic-sized Ice Rink, KidZania, 22-screen Reel Cinemas, Play DXB</li>
+      <li class="feat-item"><span class="fd"></span>Metro link, 14,000 parking bays, connected 5-star hotels &amp; residences</li>
+      <li class="feat-item"><span class="fd"></span>AED 1.5B expansion underway — 240 new luxury &amp; F&amp;B outlets by 2026</li>
+    </ul>
+  </div>
+</section>
+
+<!-- S3: AUDIENCE -->
+<section class="slide" id="s3">
+  <div class="s3-wrap">
+    <div>
+      <span class="lbl">02 — Audience Intelligence</span>
+      <h2 class="h2 fu">Who We<br><em>Reach</em></h2>
+      <p class="bc fu d1" style="margin-top:16px">Over 60% of visitors are international tourists from Europe, Asia, and the Middle East — supported by Dubai's 85% expatriate resident base with per capita income exceeding USD 40,000.</p>
+      <div class="aud-bars fu d2">
+        <div class="aud-row">
+          <div class="aud-meta">International Tourists <span>60%+</span></div>
+          <div class="aud-track"><div class="aud-fill" style="width:60%"></div></div>
+        </div>
+        <div class="aud-row">
+          <div class="aud-meta">HHI USD 40K+ (Expat Base) <span>85%</span></div>
+          <div class="aud-track"><div class="aud-fill" style="width:85%"></div></div>
+        </div>
+        <div class="aud-row">
+          <div class="aud-meta">Monthly Repeat Visitors <span>~67%</span></div>
+          <div class="aud-track"><div class="aud-fill" style="width:67%"></div></div>
+        </div>
+        <div class="aud-row">
+          <div class="aud-meta">Instagram Followers <span>1.3M</span></div>
+          <div class="aud-track"><div class="aud-fill" style="width:74%"></div></div>
+        </div>
+        <div class="aud-row">
+          <div class="aud-meta">Customer Satisfaction Score <span>4.6 / 5</span></div>
+          <div class="aud-track"><div class="aud-fill" style="width:92%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="mgrid">
+        <div class="mc fu"><span class="mc-num">111M</span><div class="mc-lbl">Annual Visitors 2024</div><div class="mc-sub">Record — up 6% YoY</div></div>
+        <div class="mc fu d1"><span class="mc-num">98%</span><div class="mc-lbl">Occupancy Rate</div><div class="mc-sub">Q1–Q3 2025</div></div>
+        <div class="mc fu d2"><span class="mc-num">+24%</span><div class="mc-lbl">Rent Growth</div><div class="mc-sub">Q3 2025 YoY</div></div>
+        <div class="mc fu d3"><span class="mc-num">4.6★</span><div class="mc-lbl">Customer Satisfaction</div><div class="mc-sub">Thousands of reviews</div></div>
+        <div class="mc fu" style="grid-column:span 2;border-top:1px solid rgba(201,168,76,.15)">
+          <span class="mc-num" style="font-size:32px">+8–15%</span>
+          <div class="mc-lbl">Retail Sales Growth H1 2024</div>
+          <div class="mc-sub">Across all categories vs. same period 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S4: TIERS -->
+<section class="slide" id="s4">
+  <div class="s4-in">
+    <div><span class="lbl">03 — Partnership Tiers</span>
+    <h2 class="h2 fu" style="max-width:480px">Structured for <em>Impact</em> at Every Scale</h2></div>
+    <div class="tgrid">
+      <div class="tc plat fu d1">
+        <div class="tbadge">Platinum</div>
+        <div class="tname">Pinnacle Partner</div>
+        <div class="tprice">From <strong>AED 8.8M</strong> / year</div>
+        <ul class="tperks">
+          <li class="tperk"><span class="pc">✦</span>Category exclusivity across Dubai Mall</li>
+          <li class="tperk"><span class="pc">✦</span>Naming rights — Grand Atrium or Fashion Ave entrance</li>
+          <li class="tperk"><span class="pc">✦</span>12 major event activations per year</li>
+          <li class="tperk"><span class="pc">✦</span>Dedicated 5,000+ sq ft brand experience zone</li>
+          <li class="tperk"><span class="pc">✦</span>Full digital OOH network — 300+ screens</li>
+          <li class="tperk"><span class="pc">✦</span>Visitor data analytics dashboard (quarterly)</li>
+          <li class="tperk"><span class="pc">✦</span>Dedicated Emaar partnership liaison</li>
+        </ul>
+      </div>
+      <div class="tc gld fu d2">
+        <div class="tbadge">Gold</div>
+        <div class="tname">Premiere Partner</div>
+        <div class="tprice">From <strong>AED 3.2M</strong> / year</div>
+        <ul class="tperks">
+          <li class="tperk"><span class="pc">✦</span>Zone-level category exclusivity</li>
+          <li class="tperk"><span class="pc">✦</span>6 event activations per year</li>
+          <li class="tperk"><span class="pc">✦</span>2,500 sq ft brand experience zone</li>
+          <li class="tperk"><span class="pc">✦</span>80-screen digital OOH (zone + anchor)</li>
+          <li class="tperk"><span class="pc">✦</span>Co-branded seasonal campaigns</li>
+          <li class="tperk"><span class="pc">✦</span>Semi-annual audience insights report</li>
+        </ul>
+      </div>
+      <div class="tc sel fu d3">
+        <div class="tbadge">Select</div>
+        <div class="tname">Signature Partner</div>
+        <div class="tprice">From <strong>AED 800K</strong> / year</div>
+        <ul class="tperks">
+          <li class="tperk"><span class="pc">✦</span>4 seasonal activations per year</li>
+          <li class="tperk"><span class="pc">✦</span>Pop-up in high-footfall corridor</li>
+          <li class="tperk"><span class="pc">✦</span>30-screen digital allocation</li>
+          <li class="tperk"><span class="pc">✦</span>Dubai Mall marketing calendar inclusion</li>
+          <li class="tperk"><span class="pc">✦</span>Annual audience performance report</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S5: LEASING -->
+<section class="slide" id="s5">
+  <div class="s5-left">
+    <span class="lbl">04 — Leasing Opportunities</span>
+    <h2 class="h2 fu">Find Your<br><em>Address</em></h2>
+    <p class="bc fu d1" style="margin-top:14px">With 98% occupancy, available spaces at Dubai Mall are limited and highly coveted. Each zone is engineered for a distinct commercial profile.</p>
+    <div class="ztabs fu d2">
+      <button class="ztab on" onclick="setZone('fa',this)">Fashion Ave</button>
+      <button class="ztab" onclick="setZone('ret',this)">Retail</button>
+      <button class="ztab" onclick="setZone('fb',this)">F&amp;B</button>
+      <button class="ztab" onclick="setZone('pop',this)">Pop-Up</button>
+    </div>
+    <div id="z-fa" class="zc on">
+      <div class="ztitle">Fashion Avenue</div>
+      <p class="zdesc">The Middle East's most prestigious luxury corridor. Louis Vuitton, Gucci, Hermès, Chanel and 150+ global maisons. Dedicated runway &amp; event space. Reserved for established luxury houses and bold newcomers.</p>
+      <div class="zspecs">
+        <div><div class="zsv">800–8K</div><div class="zsk">Sq Ft</div></div>
+        <div><div class="zsv">AED 3K–5K</div><div class="zsk">Per Sqm / Year</div></div>
+        <div><div class="zsv">Rare</div><div class="zsk">Availability</div></div>
+      </div>
+    </div>
+    <div id="z-ret" class="zc">
+      <div class="ztitle">Grand Concourse</div>
+      <p class="zdesc">Multi-level flagship retail floors with anchor stores Galeries Lafayette and Bloomingdale's. Strong co-tenancy with global category leaders. Full-floor flagship options available.</p>
+      <div class="zspecs">
+        <div><div class="zsv">2K–20K</div><div class="zsk">Sq Ft</div></div>
+        <div><div class="zsv">AED 1.8K–2.8K</div><div class="zsk">Per Sqm / Year</div></div>
+        <div><div class="zsv">11</div><div class="zsk">Spaces Open</div></div>
+      </div>
+    </div>
+    <div id="z-fb" class="zc">
+      <div class="ztitle">The Culinary Quarter</div>
+      <p class="zdesc">200+ dining experiences from fine dining to fast-casual. Highest dwell time in the property. Ideal for flagship F&amp;B concepts and chef-driven launches targeting an affluent international audience.</p>
+      <div class="zspecs">
+        <div><div class="zsv">600–5K</div><div class="zsk">Sq Ft</div></div>
+        <div><div class="zsv">AED 2.2K–3.4K</div><div class="zsk">Per Sqm / Year</div></div>
+        <div><div class="zsv">8</div><div class="zsk">Spaces Open</div></div>
+      </div>
+    </div>
+    <div id="z-pop" class="zc">
+      <div class="ztitle">The Lab — Pop-Up District</div>
+      <p class="zdesc">30–180 day concepts in Dubai Mall's highest-footfall atrium corridors. Built for digital-native brands, seasonal drops, and DTC testing with 750K+ weekly visitors passing through.</p>
+      <div class="zspecs">
+        <div><div class="zsv">150–900</div><div class="zsk">Sq Ft</div></div>
+        <div><div class="zsv">AED 95K/mo</div><div class="zsk">Starting Rate</div></div>
+        <div><div class="zsv">14</div><div class="zsk">Spots Available</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="s5-right">
+    <div class="fp">
+      <div class="fpz fp-fa lit" onclick="setZone('fa',null)">Fashion Ave</div>
+      <div class="fpz fp-anc">Bloomingdale's</div>
+      <div class="fpz fp-fb" onclick="setZone('fb',null)">F&amp;B</div>
+      <div class="fpz fp-ret" onclick="setZone('ret',null)">Retail</div>
+      <div class="fpz fp-atr">Grand Atrium</div>
+      <div class="fpz fp-pop" onclick="setZone('pop',null)">Pop-Up Lab</div>
+      <div class="fpz fp-ent">Entertainment</div>
+    </div>
+  </div>
+</section>
+
+<!-- S6: ATTRACTIONS -->
+<section class="slide" id="s6">
+  <div class="s6-in">
+    <span class="lbl">05 — World-Class Attractions</span>
+    <h2 class="h2 fu">What Keeps Them<br><em>Coming Back</em></h2>
+    <div class="agrid">
+      <div class="acard fu d1">
+        <div class="acard-img">
+          <!-- Dubai Aquarium – Wikimedia Commons, CC BY-SA 3.0 -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Dubai_aquarium.jpg/800px-Dubai_aquarium.jpg"
+               alt="Dubai Aquarium and Underwater Zoo" loading="lazy"
+               onerror="this.src='https://images.pexels.com/photos/2166711/pexels-photo-2166711.jpeg?auto=compress&cs=tinysrgb&w=800'">
+        </div>
+        <div class="acard-body">
+          <span class="acard-num">01</span>
+          <div class="acard-name">Dubai Aquarium &amp; Underwater Zoo</div>
+          <div class="acard-cap">World's largest acrylic panel · 140+ species</div>
+        </div>
+      </div>
+      <div class="acard fu d2">
+        <div class="acard-img">
+          <!-- Dubai Fountain – Wikimedia Commons, CC BY-SA 2.0 -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Dubai_Fountain_at_Burj_Khalifa_Lake.jpg/800px-Dubai_Fountain_at_Burj_Khalifa_Lake.jpg"
+               alt="Dubai Fountain show" loading="lazy"
+               onerror="this.src='https://images.pexels.com/photos/2190278/pexels-photo-2190278.jpeg?auto=compress&cs=tinysrgb&w=800'">
+        </div>
+        <div class="acard-body">
+          <span class="acard-num">02</span>
+          <div class="acard-name">Dubai Fountain</div>
+          <div class="acard-cap">World's largest choreographed fountain · nightly shows</div>
+        </div>
+      </div>
+      <div class="acard fu d3">
+        <div class="acard-img">
+          <!-- Fashion Avenue – Wikimedia Commons, CC BY-SA 3.0 -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Fashion_Avenue-Dubai_Mall_-_panoramio.jpg/800px-Fashion_Avenue-Dubai_Mall_-_panoramio.jpg"
+               alt="Dubai Mall Fashion Avenue" loading="lazy"
+               onerror="this.src='https://images.pexels.com/photos/1476321/pexels-photo-1476321.jpeg?auto=compress&cs=tinysrgb&w=800'">
+        </div>
+        <div class="acard-body">
+          <span class="acard-num">03</span>
+          <div class="acard-name">Fashion Avenue</div>
+          <div class="acard-cap">150+ luxury maisons · exclusive retail runway</div>
+        </div>
+      </div>
+      <div class="acard fu d1">
+        <div class="acard-img">
+          <!-- Dubai Ice Rink -->
+          <img src="https://images.pexels.com/photos/1547054/pexels-photo-1547054.jpeg?auto=compress&cs=tinysrgb&w=800"
+               alt="Dubai Ice Rink" loading="lazy">
+        </div>
+        <div class="acard-body">
+          <span class="acard-num">04</span>
+          <div class="acard-name">Dubai Ice Rink</div>
+          <div class="acard-cap">Olympic-sized · open year-round · skating shows</div>
+        </div>
+      </div>
+      <div class="acard fu d2">
+        <div class="acard-img">
+          <!-- Burj Khalifa view from Dubai Mall -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Burj_Khalifa_from_Dubai_Mall.jpg/800px-Burj_Khalifa_from_Dubai_Mall.jpg"
+               alt="Burj Khalifa view from Dubai Mall" loading="lazy"
+               onerror="this.src='https://images.pexels.com/photos/2574391/pexels-photo-2574391.jpeg?auto=compress&cs=tinysrgb&w=800'">
+        </div>
+        <div class="acard-body">
+          <span class="acard-num">05</span>
+          <div class="acard-name">Burj Khalifa Access</div>
+          <div class="acard-cap">Direct connected access · At The Top observation deck</div>
+        </div>
+      </div>
+      <div class="acard fu d3">
+        <div class="acard-img">
+          <img src="https://images.pexels.com/photos/7234213/pexels-photo-7234213.jpeg?auto=compress&cs=tinysrgb&w=800"
+               alt="Reel Cinemas" loading="lazy">
+        </div>
+        <div class="acard-body">
+          <span class="acard-num">06</span>
+          <div class="acard-name">Reel Cinemas</div>
+          <div class="acard-cap">22 screens · 4 luxury suites · first THX cinema in Dubai</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S7: ACTIVATIONS -->
+<section class="slide" id="s7">
+  <div class="s7-in">
+    <span class="lbl">06 — Activation Formats</span>
+    <h2 class="h2 fu">Proven Formats.<br><em>Measurable</em> Returns.</h2>
+    <div class="act-grid">
+      <div class="ac fu d1">
+        <div class="ac-n">01</div>
+        <div class="ac-ico">✦</div>
+        <div class="ac-title">Property Takeovers</div>
+        <p class="ac-desc">Full-mall immersive brand experiences from entry to anchor zones. Past clients span auto, fashion, and technology verticals globally.</p>
+      </div>
+      <div class="ac fu d2">
+        <div class="ac-n">02</div>
+        <div class="ac-ico">◈</div>
+        <div class="ac-title">Digital OOH Network</div>
+        <p class="ac-desc">300+ premium screens across all zones. Programmatic or direct. Dubai Mall unveiled the world's largest OLED screen in 2017. Real-time A/B capability.</p>
+      </div>
+      <div class="ac fu d3">
+        <div class="ac-n">03</div>
+        <div class="ac-ico">⬡</div>
+        <div class="ac-title">Pop-Up Activations</div>
+        <p class="ac-desc">Short-term activations in The Lab and Grand Atrium corridors. 750K+ weekly visitors. Ideal for launches, sampling, and direct commerce.</p>
+      </div>
+      <div class="ac fu d4">
+        <div class="ac-n">04</div>
+        <div class="ac-ico">◎</div>
+        <div class="ac-title">Festival Co-Branding</div>
+        <p class="ac-desc">Dubai Shopping Festival, Dubai Food Festival, and the 3 Day Super Sale — co-branded campaigns tied to events that each draw millions of visits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S8: EVENTS -->
+<section class="slide" id="s8">
+  <div class="vbg">
+    <!-- Dubai Mall night exterior – Wikimedia Commons -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/13_Dubai_Mall_night_view_exterior.jpg/1920px-13_Dubai_Mall_night_view_exterior.jpg"
+         alt="Dubai Mall at night" loading="lazy"
+         onerror="this.src='https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg?auto=compress&cs=tinysrgb&w=1920'">
+  </div>
+  <div class="s8-wrap">
+    <span class="lbl">07 — Signature Events</span>
+    <h2 class="h3 fu" style="font-size:clamp(34px,4.5vw,58px)">A Calendar of<br><em>Unmissable</em> Moments</h2>
+    <p class="bc fu d1" style="margin-top:14px;max-width:480px;margin-left:auto;margin-right:auto">Dubai Mall's event calendar drives millions of incremental visits. Partner brands gain primacy across every touchpoint — digital, physical, and experiential.</p>
+    <div class="ev-strip fu d2">
+      <div class="ev">
+        <div class="ev-mo">Jan – Feb</div>
+        <div class="ev-name">Dubai Shopping Festival</div>
+        <div class="ev-type">Retail · Entertainment · Prizes</div>
+      </div>
+      <div class="ev">
+        <div class="ev-mo">Feb – Mar</div>
+        <div class="ev-name">Dubai Food Festival</div>
+        <div class="ev-type">Culinary · Chefs · Pop-Ups</div>
+      </div>
+      <div class="ev">
+        <div class="ev-mo">Nov – Dec</div>
+        <div class="ev-name">3 Day Super Sale</div>
+        <div class="ev-type">Record Footfall · Brand Exposure</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S9: CTA -->
+<section class="slide" id="s9">
+  <div class="s9-bg"></div>
+  <div class="s9-line s9-lt"></div>
+  <div class="s9-line s9-lb"></div>
+  <div class="s9-wrap">
+    <span class="s9-ov fu">Let's Build Something Remarkable</span>
+    <h2 class="s9-h fu d1">Your Brand at the<br><em>Centre</em> of the World</h2>
+    <p class="s9-body fu d2">Category exclusivity is strictly limited. Partnership openings for 2025–2026 are available now. Emaar's commercial team is ready to meet.</p>
+    <div class="s9-btns fu d3">
+      <a class="btn-p" href="mailto:partnerships@thedubaimall.com">Request a Meeting</a>
+      <button class="btn-g" onclick="go(3)">View Tiers</button>
+    </div>
+    <div class="s9-contact fu d4">
+      <div class="s9-ci"><span>Partnerships</span>partnerships@thedubaimall.com</div>
+      <div class="s9-ci"><span>Leasing</span>leasing@emaar.ae</div>
+      <div class="s9-ci"><span>Official Site</span>thedubaimall.com</div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div id="bnav">
+  <button class="arr" id="bp" onclick="nav(-1)">←</button>
+  <span class="ctr" id="ctr">01 / 09</span>
+  <button class="arr" id="bn" onclick="nav(1)">→</button>
+</div>
+
+<script>
+const slides=document.querySelectorAll('.slide'),
+      dotsEl=document.getElementById('dots'),
+      ctr=document.getElementById('ctr'),
+      prog=document.getElementById('prog'),
+      mbs=document.querySelectorAll('.mb'),
+      nls=document.querySelectorAll('.nav-links a[data-s]'),
+      navEl=document.getElementById('nav');
+let cur=0,total=slides.length,lk=false;
+
+slides.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' on':'');
+  d.onclick=()=>go(i);
+  dotsEl.appendChild(d);
+});
+
+function go(n){
+  if(n<0||n>=total)return;
+  slides[cur].classList.remove('on');
+  cur=n;slides[cur].classList.add('on');
+  update();triggerBars();
+}
+function nav(d){if(lk)return;go(cur+d);lk=true;setTimeout(()=>lk=false,860)}
+function update(){
+  document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===cur));
+  ctr.textContent=String(cur+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');
+  prog.style.width=((cur+1)/total*100)+'%';
+  nls.forEach(a=>a.classList.toggle('on',parseInt(a.dataset.s)===cur));
+  mbs.forEach((b,i)=>b.classList.toggle('on',i===cur));
+  document.getElementById('bp').style.opacity=cur===0?'.3':'1';
+  document.getElementById('bn').style.opacity=cur===total-1?'.3':'1';
+  navEl.classList.toggle('solid',cur>0);
+}
+function triggerBars(){
+  document.querySelectorAll('.aud-fill').forEach(b=>{
+    b.style.transition='none';b.style.transform='scaleX(0)';
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      b.style.transition='transform 1.3s cubic-bezier(.16,1,.3,1)';
+      b.style.transform='scaleX(1)';
+    }));
+  });
+}
+function setZone(z,btn){
+  document.querySelectorAll('.zc').forEach(c=>c.classList.remove('on'));
+  document.querySelectorAll('.ztab').forEach(t=>t.classList.remove('on'));
+  document.querySelectorAll('.fpz').forEach(f=>f.classList.remove('lit'));
+  document.getElementById('z-'+z).classList.add('on');
+  if(btn)btn.classList.add('on');
+  const m={fa:'fp-fa',ret:'fp-ret',fb:'fp-fb',pop:'fp-pop'};
+  if(m[z])document.querySelector('.'+m[z]).classList.add('lit');
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowDown')nav(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp')nav(-1);
+});
+let tx=0;
+document.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{
+  const dx=e.changedTouches[0].clientX-tx;
+  if(Math.abs(dx)>55)nav(dx<0?1:-1);
+},{passive:true});
+document.addEventListener('wheel',e=>{nav(e.deltaY>0?1:-1)},{passive:true});
+update();
+</script>
+</body>
+</html>
