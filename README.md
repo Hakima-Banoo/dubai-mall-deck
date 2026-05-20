@@ -136,11 +136,13 @@ Two video backgrounds (Hero + Events) autoplay silently. All other videos pause 
 ## File Structure
 
 ```
-/
 ├── index.html       ← Entire deck (HTML + CSS + JS in one file)
-└── README.md        ← This file
+├── README.md        ← This file
+└── write-up.md      ← Design rationale & AI tools used
 ```
 
 ---
 
-*Built for the Liat AI take-home assignment. All content is for demonstration purposes. Dubai Mall is a trademark of Emaar Properties.*
+*Built by Hakima Banoo for the Liat AI take-home assignment. 
+All content is for demonstration purposes. 
+Dubai Mall is a trademark of Emaar Properties.*
